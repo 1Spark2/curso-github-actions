@@ -1,0 +1,54 @@
+name: Triggers
+run-name: Usando diferentes triggers
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - '**.py'
+  issues:
+    types:
+      - labeled
+  workflow_dispatch:
+    inputs:
+      nombre:
+        description: 'Ezequiel'
+        required: True
+        default: Juan
+        type: string
+      lenguaje_favorito:
+        description: 'Lenguaje Favorito!'
+        required: True
+        default: Python
+        type: string
+        options:
+        - Python
+        - GO
+        - JS
+  schedule:
+    - cron: '15 22 * * *'
+jobs:
+  hola-mundo-manual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v3
+      - name: Definir Nombres
+      - run: echo "USERNAME=$ {{ inputs.nombre }}" >> GITHUB_ENV
+      - name: Definir Lenguaje
+      - run: echo "LENGUAJE=$ {{ inputs.lenguaje_favorito }}" >> GITHUB_ENV
+      - name: Run Script
+      - run: python hola_lenguaje.py
+  hola-mundo:
+    if: ${{ github.event_name != 'workflo-dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v3
+      - name: Definir Variable
+      - run: echo "USERNAME=${{ github.actor }}" >> GITHUB_ENV
+      - name: Run Script
+      - run: python hola_mundo.py
+      

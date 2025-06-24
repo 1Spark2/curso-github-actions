@@ -1,0 +1,1 @@
+print("WHO DA FCK ARE YOU MANAO?")
