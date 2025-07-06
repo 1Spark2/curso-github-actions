@@ -1,4 +1,4 @@
-name: Triggers
+name: Triggerss
 run-name: Usando diferentes triggers
 on:
   push:
