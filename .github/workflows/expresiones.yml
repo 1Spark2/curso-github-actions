@@ -8,6 +8,7 @@ on:
         description: 'Edad'
         required: true
         type: integer
+        default: 25
       nombre:
         description: 'Nombre'
         required: true
@@ -20,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - name: Correr Input
         run: echo ${{ inputs.nombre }} es mayor de edad!
   menor:
