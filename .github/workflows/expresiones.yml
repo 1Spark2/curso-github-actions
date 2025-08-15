@@ -19,14 +19,15 @@ jobs:
     if: ${{ fromJSON(inputs.edad) >= 18 }}
     runs-on: ubuntu-latest
     steps:
-      - name: Correr Input
       - uses: actions/checkout@v3
-      - run: echo ${{ inputs.nombre }} es mayor de edad!
+      - name: Correr Input
+        run: echo ${{ inputs.nombre }} es mayor de edad!
   menor:
     if: ${{ fromJSON(inputs.edad) < 18 }}
     runs-on: ubuntu-latest
     steps:
-      - name: Correr Input
       - uses: actions/checkout@v3
-      - run: echo ${{ inputs.nombre }} es menor de edad!
+      
+      - name: Correr Input
+        run: echo ${{ inputs.nombre }} es menor de edad!
     
