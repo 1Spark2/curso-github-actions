@@ -1,0 +1,37 @@
+name: Expressiones
+run-name: Expressiones Si ahora
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      edad:
+        description: 'Edad'
+        required: true
+        type: string
+        default: '25'
+      nombre:
+        description: 'Nombre'
+        required: true
+        default: 'Eze'
+        type: string
+
+jobs:
+  mayor:
+    if: ${{ fromJSON(inputs.edad) >= 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Correr Input
+        run: echo "${{ inputs.nombre }} es mayor de edad!"
+  menor:
+    if: ${{ fromJSON(inputs.edad) < 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Correr Input
+        run: echo "${{ inputs.nombre }} es menor de edad!"
+    

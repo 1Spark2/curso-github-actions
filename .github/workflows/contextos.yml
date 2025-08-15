@@ -1,0 +1,31 @@
+name: contextos
+run-name: Aprendiendo a usar contextos
+
+env:
+  DAY_OF_WEEK: Friday
+
+on:
+  workflow_dispatch:
+    inputs:
+      day:
+        description: Dia de la semana
+        required: true
+        type: string
+        default: Saturday
+
+jobs:
+  its_friday:
+    if: ${{ format('dddd', fromJSON(toJSON(now))) == env.DAY_OF_WEEK }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Si es viernes se alegra mucho
+        run: echo HOY ES VIERNESSS!
+
+  selected_day:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: El dia seleccionado por el usuario
+        run: echo "HOY ES ${{ inputs.day }} ! en la rama $GITHUB_REF"
