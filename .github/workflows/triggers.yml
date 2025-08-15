@@ -43,7 +43,7 @@ jobs:
         run: echo "LENGUAJE=$ {{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
       
       - name: Run Script
-        run: python hola_lenguaje.py
+        run: python hola_mundo.py
   hola-mundo:
     if: ${{ github.event_name != 'workflo-dispatch' }}
     runs-on: ubuntu-latest
