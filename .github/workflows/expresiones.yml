@@ -7,8 +7,8 @@ on:
       edad:
         description: 'Edad'
         required: true
-        type: integer
-        default: 25
+        type: string
+        default: '25'
       nombre:
         description: 'Nombre'
         required: true
@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Correr Input
-        run: echo ${{ inputs.nombre }} es mayor de edad!
+        run: echo "${{ inputs.nombre }} es mayor de edad!"
   menor:
     if: ${{ fromJSON(inputs.edad) < 18 }}
     runs-on: ubuntu-latest
@@ -31,5 +31,5 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Correr Input
-        run: echo ${{ inputs.nombre }} es menor de edad!
+        run: echo "${{ inputs.nombre }} es menor de edad!"
     
