@@ -4,7 +4,6 @@ run-name: Aprendiendo a usar contextos
 env:
   DAY_OF_WEEK: Viernes
 
-
 on:
   workflow_dispatch:
     inputs:
@@ -13,7 +12,6 @@ on:
         required: true
         type: string
         default: Sabado
-
 
 jobs:
   its_friday:
