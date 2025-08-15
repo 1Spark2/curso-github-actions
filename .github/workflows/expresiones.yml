@@ -1,0 +1,30 @@
+name: Expressiones
+run-name: Expressiones Si ahora
+
+on:
+  workflow_dispatch:
+    inputs:
+      edad:
+        description: 'Edad'
+        required: true
+        type: integer
+      nombre:
+        description: 'Nombre'
+        required: true
+        default: 'Eze'
+        type: string
+
+jobs:
+  mayor:
+    if: ${{ fromJSON(inputs.edad) >= 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr Input
+      - run: echo ${{ inputs.nombre }} es mayor de edad!
+  menor:
+    if: ${{ fromJSON(inputs.edad) < 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr Input
+      - run: echo ${{ inputs.nombre }} es menor de edad!
+    
