@@ -17,16 +17,17 @@ on:
 
 jobs:
   its_friday:
-    if: ${{ format('dddd, fromJSON(toJSON(now))) == $DAY_OF_WEEK }}
+    if: ${{ format('dddd, fromJSON(toJSON(now))) == $DAY_OF_WEEK) }}
     runs-on: ubuntu-latest
     steps:
-      - name: Si es viernes se alegra mucho
       - uses: actions/checkout@v3
-      - run: echo HOY ES VIERNESSS!
+      
+      - name: Si es viernes se alegra mucho
+        run: echo HOY ES VIERNESSS!
 
   selected_day:
     runs-on: ubuntu-latest
     steps:
-      - name: El dia seleccionado por el usuario
       - uses: actions/checkout@v3
-      - run: echo HOY ES ${{ inputs.day )) ! en la rama $GITHUB_REF
+      - name: El dia seleccionado por el usuario
+        run: echo HOY ES ${{ inputs.day )) ! en la rama $GITHUB_REF
