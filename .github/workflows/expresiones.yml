@@ -2,6 +2,8 @@ name: Expressiones
 run-name: Expressiones Si ahora
 
 on:
+  pull_request:
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
     inputs:
       edad:
