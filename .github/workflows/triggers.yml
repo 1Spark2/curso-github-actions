@@ -33,25 +33,27 @@ jobs:
   hola-mundo-manual:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       
       - name: Definir Nombres
-      - run: echo "USERNAME=$ {{ inputs.nombre }}" >> $GITHUB_ENV
+        run: echo "USERNAME=$ {{ inputs.nombre }}" >> $GITHUB_ENV
       
       - name: Definir Lenguaje
-      - run: echo "LENGUAJE=$ {{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
+        run: echo "LENGUAJE=$ {{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
       
       - name: Run Script
-      - run: python hola_lenguaje.py
+        run: python hola_lenguaje.py
   hola-mundo:
     if: ${{ github.event_name != 'workflo-dispatch' }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       
       - name: Definir Variable
-      - run: echo "USERNAME=${{ github.actor }}" >> GITHUB_ENV
+        run: echo "USERNAME=${{ github.actor }}" >> GITHUB_ENV
       
       - name: Run Script
-      - run: python hola_mundo.py
+        run: python hola_mundo.py
       
