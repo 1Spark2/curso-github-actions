@@ -2,7 +2,7 @@ name: contextos
 run-name: Aprendiendo a usar contextos
 
 env:
-  DAY_OF_WEEK: Viernes
+  DAY_OF_WEEK: Friday
 
 on:
   workflow_dispatch:
@@ -11,11 +11,11 @@ on:
         description: Dia de la semana
         required: true
         type: string
-        default: Sabado
+        default: Saturday
 
 jobs:
   its_friday:
-    if: ${{ format('dddd', fromJSON(toJSON(now))) == $DAY_OF_WEEK }}
+    if: ${{ format('dddd', fromJSON(toJSON(now))) == env.DAY_OF_WEEK }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
